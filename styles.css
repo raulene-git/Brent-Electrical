@@ -46,7 +46,7 @@ html {
   background: var(--navy-950);
 }
 
-section[id] { scroll-margin-top: 100px; }
+section[id] { scroll-margin-top: 120px; }
 
 body {
   font-family: var(--font-body);
@@ -115,12 +115,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .nav-logo img {
-  height: 68px;
+  height: 92px;
   width: auto;
   transition: height 0.4s var(--ease), transform 0.4s var(--ease);
 }
 .nav.scrolled .nav-logo img {
-  height: 52px;
+  height: 64px;
 }
 .nav-logo:hover img { transform: scale(1.04); }
 
@@ -191,7 +191,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav-mobile {
   display: none;
   position: fixed;
-  top: 84px; left: 0; right: 0;
+  top: 96px; left: 0; right: 0;
   background: rgba(5, 16, 30, 0.98);
   backdrop-filter: blur(20px);
   flex-direction: column;
@@ -349,8 +349,40 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   line-height: 1.65;
   color: var(--ink-300);
   max-width: 40ch;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
+
+/* Slick inline link to the Cotswolds page — sits between paragraph and CTA buttons */
+.hero-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--blue-400);
+  letter-spacing: -0.005em;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.2rem;
+  position: relative;
+  transition: color 0.35s var(--ease), gap 0.35s var(--ease);
+}
+.hero-inline-link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 30px; bottom: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+  transition: opacity 0.35s var(--ease), right 0.35s var(--ease);
+}
+.hero-inline-link:hover {
+  color: var(--ember);
+  gap: 0.85rem;
+}
+.hero-inline-link:hover::after { opacity: 1; right: 38px; }
+.hero-inline-link svg { transition: transform 0.35s var(--ease); }
+.hero-inline-link:hover svg { transform: translateX(3px); }
 
 .hero-cta-row {
   display: flex;
@@ -783,6 +815,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 /* Focal positioning so when frames crop, the *lighting* stays in view, not the wall. */
 .work-img .img-focal-top    { object-position: center 22%; }   /* pendants at top of kitchen, chandelier in gold ensuite */
+.work-img .img-focal-mirror { object-position: center 25%; }   /* halo backlit mirror sits ~25% down */
 .work-img .img-focal-niche  { object-position: center 30%; }   /* illuminated shower niche sits 25-35% down */
 .work-img .img-focal-center { object-position: center center; }/* halo mirror + downlights are central */
 .work-item:hover .work-img img {
@@ -1315,8 +1348,95 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .footer-meta { letter-spacing: 0.05em; }
 
 /* ============================================================
-   REVEAL ANIMATIONS
+   COTSWOLDS PAGE
    ============================================================ */
+
+/* Active nav link state on Cotswolds page */
+.nav-active {
+  color: var(--ember) !important;
+}
+.nav-active::after { width: 100% !important; background: var(--ember) !important; }
+
+/* "Back to main site" link in cotswold hero */
+.cotswold-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  margin-bottom: 1.5rem;
+  transition: color 0.3s var(--ease), gap 0.3s var(--ease);
+  padding: 0.4rem 0;
+}
+.cotswold-back:hover { color: var(--ink-100); gap: 0.85rem; }
+
+/* Hero variation for cotswold */
+.hero-cotswold .hero-headline em {
+  color: var(--ember);
+}
+
+/* "What's different about Cotswold homes" section */
+.cotswold-difference {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  background: var(--navy-900);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.difference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 4rem;
+}
+.difference-item {
+  position: relative;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-strong);
+}
+.difference-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ember);
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+.difference-item h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: -0.015em;
+  color: var(--ink-100);
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+.difference-item p {
+  color: var(--ink-300);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 50ch;
+}
+
+/* Cotswold work grid — 5 items needs slightly different layout than the 4-item main grid */
+.cotswold-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.cotswold-grid .work-item-lg { grid-column: span 2; }
+.cotswold-grid .work-item-sm { grid-column: span 1; }
+
+/* On the cotswold page, mobile per-card aspect ratios */
+@media (max-width: 768px) {
+  .cotswold-grid .work-item:nth-of-type(1) .work-img { aspect-ratio: 4/5; }  /* stone wall pendants */
+  .cotswold-grid .work-item:nth-of-type(2) .work-img { aspect-ratio: 4/5; }  /* island pendants */
+  .cotswold-grid .work-item:nth-of-type(3) .work-img { aspect-ratio: 3/4; }  /* glass pendants - tall */
+  .cotswold-grid .work-item:nth-of-type(4) .work-img { aspect-ratio: 4/5; }  /* black island */
+  .cotswold-grid .work-item:nth-of-type(5) .work-img { aspect-ratio: 4/5; }  /* shelf detail */
+}
+
+
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -1367,7 +1487,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   /* Per-card mobile aspect ratios so each photo's lighting feature stays in frame.
      The desktop cropping (4/5 portrait small, 16/10 landscape large) hides the lights on phones. */
   .work-item:nth-of-type(1) .work-img { aspect-ratio: 4/5; }   /* gold ensuite — keep chandelier + brass mirror */
-  .work-item:nth-of-type(2) .work-img { aspect-ratio: 3/5; }   /* shower niche — preserve tall ratio */
+  .work-item:nth-of-type(2) .work-img { aspect-ratio: 4/5; }   /* navy bathroom — portrait, halo mirror at top */
   .work-item:nth-of-type(3) .work-img { aspect-ratio: 4/5; }   /* loft bathroom — keep halo mirror */
   .work-item:nth-of-type(4) .work-img { aspect-ratio: 3/2; }   /* kitchen — wide enough to keep all 3 pendants */
   .work-item figcaption {
@@ -1382,6 +1502,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
   .trust-grid { grid-template-columns: 1fr; gap: 3rem; }
   .trust-right { grid-template-columns: 1fr; }
+  .difference-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
   .contact-inner { grid-template-columns: 1fr; }
   .contact-form { padding: 1.75rem; }
@@ -1415,7 +1536,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (max-width: 420px) {
-  .nav-logo img { height: 48px; }
+  .nav-logo img { height: 60px; }
   .section-title, .contact-title { font-size: 2.25rem; }
   .hero-headline h1 { font-size: 3rem; }
   .manifesto-text { font-size: 1.6rem; }
