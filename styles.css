@@ -115,12 +115,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .nav-logo img {
-  height: 120px;
-  width: auto;
-  transition: height 0.4s var(--ease), transform 0.4s var(--ease);
+  width: 340px;
+  height: auto;
+  transition: width 0.4s var(--ease), transform 0.4s var(--ease);
 }
 .nav.scrolled .nav-logo img {
-  height: 84px;
+  width: 240px;
 }
 .nav-logo:hover img { transform: scale(1.04); }
 
