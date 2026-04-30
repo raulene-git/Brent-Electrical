@@ -612,17 +612,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: relative;
   width: 100%;
 }
-.manifesto .container {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: clamp(3rem, 6vw, 7rem);
-  align-items: end;
-}
+
 .manifesto-text {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(1.75rem, 4.2vw, 3.75rem);
-  line-height: 1.2;
+  font-size: clamp(1.5rem, 3.2vw, 2.85rem);
+  line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--ink-100);
   max-width: 100%;
@@ -650,33 +645,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--ember);
 }
 
-.manifesto-right {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  padding-left: clamp(2rem, 4vw, 4rem);
-  border-left: 1px solid var(--line);
-  justify-content: flex-end;
-}
-.manifesto-stat-num {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 400;
-  color: var(--ink-100);
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-.manifesto-stat-num span {
-  color: var(--ember);
-  font-size: 0.6em;
-}
-.manifesto-stat-label {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: var(--ink-400);
-  line-height: 1.6;
-  max-width: 28ch;
-}
 
 /* ============================================================
    SECTION SHARED
@@ -1602,9 +1570,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (max-width: 768px) {
-  .manifesto .container { grid-template-columns: 1fr; }
-  .manifesto-right { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 2rem; }
-
   .nav-links, .nav-cta { display: none; }
   .nav-burger { display: flex; }
   .nav-mobile { display: flex; }
