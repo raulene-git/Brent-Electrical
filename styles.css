@@ -612,16 +612,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: relative;
   width: 100%;
 }
+.manifesto .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.manifesto .section-label {
+  align-self: flex-start;
+  margin-bottom: 1.75rem;
+}
 
 .manifesto-text {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(1.5rem, 3.2vw, 2.85rem);
-  line-height: 1.25;
+  font-size: clamp(1.75rem, 4.2vw, 3.75rem);
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--ink-100);
+  width: 100%;
   max-width: 100%;
   margin-top: 2rem;
+  display: block;
 }
 .manifesto-text em {
   font-style: italic;
